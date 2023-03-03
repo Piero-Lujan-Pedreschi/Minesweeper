@@ -1,7 +1,7 @@
 import de.bezier.guido.*;
 public final static int NUM_ROWS = 20;
 public final static int NUM_COLS = 20;
-public final static int NUM_MINES = 50;
+public final static int NUM_MINES = 10;
 private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList <MSButton> mines = new ArrayList <MSButton> (); //ArrayList of just the minesweeper buttons that are mined
 void setup() {
@@ -30,7 +30,6 @@ public void setMines()
     if(mines.contains(buttons[r][c]) == false)
     {
       mines.add(buttons[r][c]);
-      //System.out.println(r + ", " + c);
     }
   }
 }
@@ -52,7 +51,8 @@ public void displayLosingMessage()
 }
 public void displayWinningMessage()
 {
-    //your code here
+    if(isWon())
+      buttons[10][10].setLabel("CONGRATS YOU HAVE WON");
 }
 public boolean isValid(int r, int c)
 {
@@ -69,10 +69,10 @@ public int countMines(int row, int col)
        int newCol = col + posMods[i][1];
        if(isValid(newRow, newCol) == false)
          continue;
+         //check id button is already clicked
        if(mines.contains(buttons[newRow][newCol]) == true)
          numMines++;
       }
-    System.out.println(numMines);
     return numMines;  
 }
 public class MSButton
@@ -107,20 +107,11 @@ public class MSButton
       } else if(countMines(myRow, myCol) > 0) {
         setLabel(countMines(myRow, myCol));
       } else {
-        //buttons[myRow+1][myCol-1].mousePressed();
-        //buttons[myRow+1][myCol].mousePressed();
-        //buttons[myRow+1][myCol+1].mousePressed();
-        //buttons[myRow-1][myCol-1].mousePressed();
-        //buttons[myRow-1][myCol].mousePressed();
-        //buttons[myRow-1][myCol+1].mousePressed();
-        //buttons[myRow][myCol-1].mousePressed();
-        //buttons[myRow][myCol+1].mousePressed();
         int [][] posMods = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
         for(int i = 0; i < posMods.length; i++) {    
           int newRow = myRow + posMods[i][0];
           int newCol = myCol + posMods[i][1];
           buttons[newRow][newCol].mousePressed();
-          //check if clicked =false;
         }
       }
     }
