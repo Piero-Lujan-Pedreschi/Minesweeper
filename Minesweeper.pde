@@ -39,7 +39,7 @@ public void draw ()
     background( 0 );
     if(isWon() == true)
        displayWinningMessage();
-    else
+    else if(isWon() == false)
       displayLosingMessage();
 }
 public boolean isWon()
