@@ -46,7 +46,7 @@ public boolean isWon()
 {
     for(int r = 0; r < buttons.length; r++) {
       for(int c = 0; c < buttons[r].length; c++) {
-        if(!mines.contains(buttons[r][c] && buttons[r][c].isClicked==true)
+        if(!mines.contains(buttons[r][c] && buttons[r][c].isClicked==false)
           return false;
       }
     }
@@ -54,23 +54,23 @@ public boolean isWon()
  }
 public void displayLosingMessage()
 {
-    //for(int i = 0; i < mines.size(); i++) {
-    //  if(mines.get(i).isClicked()==false)
-    //    mines.get(i).mousePressed();
-    //}
-    //noStroke();
-    //fill(166, 136, 235, 15);
-    //rect(25, 75, 490, 400, 155);
-    //fill(255);
-    //text("Game Over!", 275, 120);
+    for(int i = 0; i < mines.size(); i++) {
+      if(mines.get(i).isClicked()==false)
+        mines.get(i).mousePressed();
+    }
+    noStroke();
+    fill(166, 136, 235, 15);
+    rect(25, 75, 490, 400, 155);
+    fill(255);
+    text("Game Over!", 275, 120);
 }
 public void displayWinningMessage()
 {
-    //noStroke();
-    //fill(166, 136, 235, 15);
-    //rect(25, 75, 490, 400, 155);
-    //fill(255);
-    //text("You Win!", 275, 120);
+    noStroke();
+    fill(166, 136, 235, 15);
+    rect(25, 75, 490, 400, 155);
+    fill(255);
+    text("You Win!", 275, 120);
 }
 public boolean isValid(int r, int c)
 {
