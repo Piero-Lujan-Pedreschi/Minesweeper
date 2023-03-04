@@ -44,8 +44,12 @@ public void draw ()
 }
 public boolean isWon()
 {
-    if(!mines.contains(this) && this.isClicked() == false)
-      return false;
+    for(int r = 0; r < buttons.length; r++) {
+      for(int c = 0; c < buttons[r].length; c++) {
+        if(!mines.contains(buttons[r][c]) && buttons[r][c].isClicked() == false)
+          return false;
+      }
+    }
     return true;
  }
 public void displayLosingMessage()
