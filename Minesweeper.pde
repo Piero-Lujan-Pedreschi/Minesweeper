@@ -4,6 +4,7 @@ public final static int NUM_COLS = 20;
 public final static int NUM_MINES = 10;
 private MSButton[][] buttons; //2d array of minesweeper buttons
 private ArrayList <MSButton> mines = new ArrayList <MSButton> (); //ArrayList of just the minesweeper buttons that are mined
+
 void setup() {
   size(400, 400);
   textAlign(CENTER, CENTER);
@@ -21,8 +22,7 @@ void setup() {
   setMines();
 }
 
-public void setMines()
-{
+public void setMines() {
   while(mines.size() < NUM_MINES) 
   {
     int r = (int)(Math.random() *  NUM_ROWS);
@@ -34,14 +34,13 @@ public void setMines()
   }
 }
 
-public void draw ()
-{
+public void draw () {
     background( 0 );
     if(isWon() == true)
        displayWinningMessage();
 }
-public boolean isWon()
-{
+
+public boolean isWon() {
     for(int r = 0; r < buttons.length; r++) {
       for(int c = 0; c < buttons[r].length; c++) {
         if(!mines.contains(buttons[r][c]) && buttons[r][c].isClicked() == false)
@@ -49,9 +48,9 @@ public boolean isWon()
       }
     }
     return true;
- }
-public void displayLosingMessage()
-{
+}
+
+public void displayLosingMessage() {
     for(int i = 0; i < mines.size(); i++) {
       if(mines.get(i).isClicked()==false)
         mines.get(i).mousePressed();
@@ -64,8 +63,8 @@ public void displayLosingMessage()
     buttons[10][12].setLabel("S");
     buttons[10][13].setLabel("E");
 }
-public void displayWinningMessage()
-{
+
+public void displayWinningMessage() {
     buttons[10][7].setLabel("Y");
     buttons[10][8].setLabel("O");
     buttons[10][9].setLabel("U");
@@ -73,14 +72,14 @@ public void displayWinningMessage()
     buttons[10][12].setLabel("I");
     buttons[10][13].setLabel("N");
 }
-public boolean isValid(int r, int c)
-{
+
+public boolean isValid(int r, int c) {
   if(r <NUM_ROWS && r >= 0 && c < NUM_COLS && c >= 0)
     return true;
   return false;
 }
-public int countMines(int row, int col)
-{
+
+public int countMines(int row, int col) {
    int [][] posMods = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
    int numMines = 0;
      for(int i = 0; i < posMods.length; i++) {
@@ -95,15 +94,14 @@ public int countMines(int row, int col)
     return numMines;  
 }
 
-public class MSButton
-{
+
+public class MSButton {
     private int myRow, myCol;
     private float x,y, width, height;
     private boolean clicked, flagged;
     private String myLabel;
     
-    public MSButton ( int row, int col )
-    {
+    public MSButton ( int row, int col ) {
         width = 400/NUM_COLS;
         height = 400/NUM_ROWS;
         myRow = row;
@@ -116,32 +114,32 @@ public class MSButton
     }
 
     // called by manager
-    public boolean isClicked() 
-    {
+    public boolean isClicked() {
       return clicked;
     }
-    public void mousePressed () 
-    {
+    
+    public void mousePressed () {
       clicked = true;
       if(mouseButton == RIGHT) {
         flagged = !flagged;
         clicked = flagged;
-      } else if(mines.contains(this)) {
+      } else if (mines.contains(this)) {
         displayLosingMessage();
-      } else if(countMines(myRow, myCol) > 0) {
+      } else if (countMines(myRow, myCol) > 0) {
         setLabel(countMines(myRow, myCol));
       } else {
         int [][] posMods = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
         for(int i = 0; i < posMods.length; i++) {    
           int newRow = myRow + posMods[i][0];
           int newCol = myCol + posMods[i][1];
+          if(isValid(newRow, newCol) == false)
+            continue;
           buttons[newRow][newCol].mousePressed();
         }
       }
     }
     
-    public void draw () 
-    {    
+    public void draw () {    
         if (flagged)
             fill(0);
          else if( clicked && mines.contains(this) ) 
@@ -155,16 +153,16 @@ public class MSButton
         fill(0);
         text(myLabel,x+width/2,y+height/2);
     }
-    public void setLabel(String newLabel)
-    {
+
+    public void setLabel(String newLabel) {
         myLabel = newLabel;
     }
-    public void setLabel(int newLabel)
-    {
+
+    public void setLabel(int newLabel) {
         myLabel = ""+ newLabel;
     }
-    public boolean isFlagged()
-    {
+
+    public boolean isFlagged() {
         return flagged;
     }
 }
