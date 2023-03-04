@@ -49,7 +49,7 @@ public boolean isWon()
           return false;
       }
     }
-    return true
+    return true;
  }
 public void displayLosingMessage()
 {
