@@ -51,8 +51,7 @@ public void displayLosingMessage()
 }
 public void displayWinningMessage()
 {
-    if(isWon())
-      buttons[10][10].setLabel("CONGRATS YOU HAVE WON");
+    //your code here
 }
 public boolean isValid(int r, int c)
 {
@@ -75,6 +74,7 @@ public int countMines(int row, int col)
       }
     return numMines;  
 }
+
 public class MSButton
 {
     private int myRow, myCol;
@@ -96,6 +96,10 @@ public class MSButton
     }
 
     // called by manager
+    public boolean isClicked() 
+    {
+      
+    }
     public void mousePressed () 
     {
       clicked = true;
