@@ -45,12 +45,12 @@ public boolean isWon()
 {
     for(int r = 0; r < buttons.length; r++) {
       for(int c = 0; c < buttons[r].length; c++) {
-        if(mines.contains(buttons[r][c] && buttons[r][c].isClicked==false)
-          return true;
+        if(mines.contains(buttons[r][c] && buttons[r][c].isClicked==true)
+          return false;
       }
     }
-    return false;
-}
+    return true
+ }
 public void displayLosingMessage()
 {
     for(int i = 0; i < mines.size(); i++) {
