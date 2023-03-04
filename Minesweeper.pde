@@ -46,7 +46,7 @@ public boolean isWon()
 {
     for(int r = 0; r < buttons.length; r++) {
       for(int c = 0; c < buttons[r].length; c++) {
-        if(!mines.contains(buttons[r][c] && buttons[r][c].isClicked==false)
+        if(!mines.contains(buttons[r][c]) && buttons[r][c].isClicked() == false)
           return false;
       }
     }
@@ -132,8 +132,8 @@ public class MSButton
       } else {
         int [][] posMods1 = {{-1, 0}, {0, -1}, {0, 1}, {1, 0}};
         for(int i = 0; i < posMods1.length; i++) {    
-          int newRow = myRow + posMods[i][0];
-          int newCol = myCol + posMods[i][1];
+          int newRow = myRow + posMods1[i][0];
+          int newCol = myCol + posMods1[i][1];
           buttons[newRow][newCol].mousePressed();
         }
       }
