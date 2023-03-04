@@ -58,15 +58,22 @@ public void displayLosingMessage()
       //if(mines.get(i).isClicked()==false)
         //mines.get(i).mousePressed();
     //}
-    //noStroke();
-    //fill(166, 136, 235, 15);
-    //rect(25, 75, 490, 400, 155);
-    //fill(255);
-    //text("Game Over!", 275, 120);
+    buttons[10][6].setLabel("Y");
+    buttons[10][7].setLabel("O");
+    buttons[10][8].setLabel("U");
+    buttons[10][10].setLabel("L");
+    buttons[10][11].setLabel("O");
+    buttons[10][12].setLabel("S");
+    buttons[10][13].setLabel("E");
 }
 public void displayWinningMessage()
 {
-    buttons[10][10].setLabel("You Win!");
+    buttons[10][7].setLabel("Y");
+    buttons[10][8].setLabel("O");
+    buttons[10][9].setLabel("U");
+    buttons[10][11].setLabel("W");
+    buttons[10][12].setLabel("I");
+    buttons[10][13].setLabel("N");
 }
 public boolean isValid(int r, int c)
 {
