@@ -54,23 +54,23 @@ public boolean isWon()
  }
 public void displayLosingMessage()
 {
-    for(int i = 0; i < mines.size(); i++) {
-      if(mines.get(i).isClicked()==false)
-        mines.get(i).mousePressed();
-    }
-    noStroke();
-    fill(166, 136, 235, 15);
-    rect(25, 75, 490, 400, 155);
-    fill(255);
-    text("Game Over!", 275, 120);
+    //for(int i = 0; i < mines.size(); i++) {
+      //if(mines.get(i).isClicked()==false)
+        //mines.get(i).mousePressed();
+    //}
+    //noStroke();
+    //fill(166, 136, 235, 15);
+    //rect(25, 75, 490, 400, 155);
+    //fill(255);
+    //text("Game Over!", 275, 120);
 }
 public void displayWinningMessage()
 {
-    noStroke();
-    fill(166, 136, 235, 15);
-    rect(25, 75, 490, 400, 155);
-    fill(255);
-    text("You Win!", 275, 120);
+    //noStroke();
+    //fill(166, 136, 235, 15);
+    //rect(25, 75, 490, 400, 155);
+    //fill(255);
+    //text("You Win!", 275, 120);
 }
 public boolean isValid(int r, int c)
 {
