@@ -44,20 +44,16 @@ public void draw ()
 }
 public boolean isWon()
 {
-    for(int r = 0; r < buttons.length; r++) {
-      for(int c = 0; c < buttons[r].length; c++) {
-        if(!mines.contains(buttons[r][c]) && buttons[r][c].isClicked() == false)
-          return false;
-      }
-    }
+    if(!mines.contains(this) && this.isClicked() == false)
+      return false;
     return true;
  }
 public void displayLosingMessage()
 {
-    //for(int i = 0; i < mines.size(); i++) {
-      //if(mines.get(i).isClicked()==false)
-        //mines.get(i).mousePressed();
-    //}
+    for(int i = 0; i < mines.size(); i++) {
+      if(mines.get(i).isClicked()==false)
+        mines.get(i).mousePressed();
+    }
     buttons[10][6].setLabel("Y");
     buttons[10][7].setLabel("O");
     buttons[10][8].setLabel("U");
