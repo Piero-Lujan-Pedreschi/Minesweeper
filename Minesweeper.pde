@@ -38,7 +38,8 @@ public void draw ()
 {
     background( 0 );
     if(isWon() == true)
-        displayWinningMessage();
+       displayWinningMessage();
+    displayLosingMessage();
 }
 public boolean isWon()
 {
@@ -47,11 +48,23 @@ public boolean isWon()
 }
 public void displayLosingMessage()
 {
-    //your code here
+    for(int i = 0; i < mines.size(); i++) {
+      if(mines.get(i).isClicked()==false)
+        mines.get(i).mousePressed();
+    }
+    noStroke();
+    fill(166, 136, 235, 15);
+    rect(25, 75, 490, 400, 155);
+    fill(255);
+    text("Game Over!", 275, 120);
 }
 public void displayWinningMessage()
 {
-    //your code here
+    noStroke();
+    fill(166, 136, 235, 15);
+    rect(25, 75, 490, 400, 155);
+    fill(255);
+    text("You Win!", 275, 120);
 }
 public boolean isValid(int r, int c)
 {
@@ -98,7 +111,7 @@ public class MSButton
     // called by manager
     public boolean isClicked() 
     {
-      
+      return clicked;
     }
     public void mousePressed () 
     {
