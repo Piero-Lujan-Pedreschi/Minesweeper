@@ -134,7 +134,9 @@ public class MSButton {
           int newCol = myCol + posMods[i][1];
           if (isValid(newRow, newCol) == false)
             continue;
-          buttons[newRow][newCol].mousePressed();
+          if (buttons[newRow][newCol].isClicked() == false) {
+            buttons[newRow][newCol].mousePressed();
+          }
         }
       }
     }
