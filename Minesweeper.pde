@@ -131,10 +131,10 @@ public class MSButton
       } else if(countMines(myRow, myCol) > 0) {
         setLabel(countMines(myRow, myCol));
       } else {
-        int [][] posMods1 = {{-1, 0}, {0, -1}, {0, 1}, {1, 0}};
-        for(int i = 0; i < posMods1.length; i++) {    
-          int newRow = myRow + posMods1[i][0];
-          int newCol = myCol + posMods1[i][1];
+        int [][] posMods = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
+        for(int i = 0; i < posMods.length; i++) {    
+          int newRow = myRow + posMods[i][0];
+          int newCol = myCol + posMods[i][1];
           buttons[newRow][newCol].mousePressed();
         }
       }
