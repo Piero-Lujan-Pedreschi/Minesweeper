@@ -66,11 +66,7 @@ public void displayLosingMessage()
 }
 public void displayWinningMessage()
 {
-    noStroke();
-    fill(166, 136, 235, 15);
-    rect(25, 75, 490, 400, 155);
-    fill(255);
-    text("You Win!", 275, 120);
+    buttons[10][10].setLabel("You Win!");
 }
 public boolean isValid(int r, int c)
 {
