@@ -39,13 +39,14 @@ public void draw ()
     background( 0 );
     if(isWon() == true)
        displayWinningMessage();
-    displayLosingMessage();
+    else
+      displayLosingMessage();
 }
 public boolean isWon()
 {
     for(int r = 0; r < buttons.length; r++) {
       for(int c = 0; c < buttons[r].length; c++) {
-        if(!mines.contains(buttons[r][c] && buttons[r][c].isClicked==true)
+        if(!mines.contains(buttons[r][c])
           return false;
       }
     }
@@ -129,8 +130,8 @@ public class MSButton
       } else if(countMines(myRow, myCol) > 0) {
         setLabel(countMines(myRow, myCol));
       } else {
-        int [][] posMods = {{-1, 0}, {0, -1}, {0, 1}, {1, 0}};
-        for(int i = 0; i < posMods.length; i++) {    
+        int [][] posMods1 = {{-1, 0}, {0, -1}, {0, 1}, {1, 0}};
+        for(int i = 0; i < posMods1.length; i++) {    
           int newRow = myRow + posMods[i][0];
           int newCol = myCol + posMods[i][1];
           buttons[newRow][newCol].mousePressed();
